@@ -9,6 +9,8 @@ RUN apt update -y && apt upgrade -y
 # Add a user named docker
 RUN useradd -m docker
 
+RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
 # Install necessary packages
 RUN apt install -y --no-install-recommends \
     curl build-essential libssl-dev libffi-dev python3 python3-venv python3-dev python3-pip jq git git-lfs sudo
