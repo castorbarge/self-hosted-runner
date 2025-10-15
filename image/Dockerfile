@@ -9,7 +9,6 @@ RUN apt update -y && apt upgrade -y
 # Add a user named docker
 RUN useradd -m docker
 
-RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 # Install necessary packages
 RUN apt install -y --no-install-recommends \
@@ -22,6 +21,9 @@ RUN cd /home/docker && mkdir actions-runner && cd actions-runner \
 
 # Change ownership to docker user and install dependencies
 RUN chown -R docker /home/docker && /home/docker/actions-runner/bin/installdependencies.sh
+
+# enable passwordless sudo
+RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 # Copy the start script and make it executable
 COPY start.sh /start.sh
