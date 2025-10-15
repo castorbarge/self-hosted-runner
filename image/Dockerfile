@@ -6,9 +6,9 @@ ARG DEBIAN_FRONTEND=noninteractive
 # Update and upgrade the system
 RUN apt update -y && apt upgrade -y
 
-# Add a user named docker
-RUN useradd -m docker
-
+# Add a user named docker with sudo privileges (needed for tailscale setup apparently.)
+RUN useradd -ms /bin/bash docker && \
+    usermod -aG sudo docker
 
 # Install necessary packages
 RUN apt install -y --no-install-recommends \
