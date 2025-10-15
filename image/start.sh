@@ -13,7 +13,7 @@ result=$(curl -L \
   -H "X-GitHub-Api-Version: 2022-11-28" \
   "https://api.github.com/orgs/${ORG}/actions/runners/registration-token")
 
-REG_TOKEN=$(echo result | jq '.token')
+REG_TOKEN=$(echo $result | jq '.token')
 echo "Retrieved reg_token: ${REG_TOKEN}"
 
 echo "Running config"
