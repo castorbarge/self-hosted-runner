@@ -12,7 +12,7 @@ RUN useradd -m docker && \
 
 # Install necessary packages and add /dev/net/tun
 RUN apt install -y --no-install-recommends \
-    curl build-essential libssl-dev libffi-dev python3 python3-venv python3-dev python3-pip jq git git-lfs sudo && \
+    curl build-essential libssl-dev libffi-dev python3 python3-venv python3-dev python3-pip jq git git-lfs sudo lftp && \
     apt-get -yqq install ssh && \
     mkdir -p /dev/net && \
     mknod /dev/net/tun c 10 200 && \
